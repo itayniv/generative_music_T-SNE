@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  /* text-align: center;
+  background-color: black; */
+}
+/* p{
+  margin:0;
+  padding: 100px;
+} */
+
+canvas {
+z-index: 0;
+left: 0;
+position: sticky;
+}
