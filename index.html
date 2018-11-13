@@ -4,10 +4,65 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="script.js"></script>
+  <script src="modal.js"></script>
 
 </head>
 <body>
-  <script src="script2.js"></script>"
+  <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+            <p>Flocking TSNE is an experiment by <a href="http://www.ayalrosenberg.com">Ayal Rosenberg</a> & <a href="http://www.ItayNiv.com">Itay Niv</a></p>
+
+            <p>This experiment displays a set of processed audio files in two dimensional space using the t-SNE
+              dimensionality reduction technique, placing similar-sounding audio clips near each other,
+              and plays them back as autonomous flocking agents collide with them.</p>
+            <p>TSNE processed with the help of <a href="http://ml4a.github.io/guides/AudioTSNEViewer/">Gene Kogan's ML4A guids</a>.</br>
+              Boids simulation heavily inspired by <a href="https://p5js.org/examples/simulate-flocking.html">p5JS Flocking</a>.
+          </div>
+          <div class="col-sm-4">
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div id="sketch-holder" class="canvas">
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="menu">
+          <button id="demo-menu-lower-left" class="mdl-button mdl-js-button">
+            Flocking tSNE
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+          for="demo-menu-lower-left">
+          <li id="model01" class="mdl-menu__item" onClick="reply_click(this.id)">Misc Sound</li>
+          <li id="model02" class="mdl-menu__item" onClick="reply_click(this.id)">John Coltrane - My Favorite Things</li>
+          <li id="model03" class="mdl-menu__item mdl-menu__item--full-bleed-divider" onClick="reply_click(this.id)">tSNE model 3</li>
+          <li id="about"class="mdl-menu__item" onclick="openModal();currentSlide(1)">about</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>
