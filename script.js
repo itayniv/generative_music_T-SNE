@@ -11,11 +11,19 @@ let hovercolor = [204, 102, 0];
 let pauseBetweenPlay = 1;
 let stopThresh = 1.0;
 let currModel = '';
-let modelArr = ['/data/randomPoints.json', '/data/favoritethings.json', '/data/edenahbez.json','/data/tomorrow.json'];
+let modelArr = ['/data/randomPoints.json','/data/clarinet.json', '/data/philarmonic_wind.json', '/data/percussion.json','/data/strings.json'];
 let animvar = 0;
 let flock;
 let mouseDown = false;
 let dataArray = [];
+let scaleNumber01 = 2000;
+let scaleNumber02 = 1000;
+let scaleNumber002 = 2800;
+
+let scaleNumber03 = 100;
+let scaleNumber04 = 3200;
+
+let maptoThis = 2000;
 
 
 
@@ -93,7 +101,7 @@ function windowResized() {
 function highlightPlayed(ellipseNumber){
   soundCircleArr[ellipseNumber].display = function() {
 
-    var c = map(ellipseNumber, 0, 2000, 0, 100);
+    var c = map(ellipseNumber, 0, maptoThis, 0, 100);
     fill(30+c,60+c,150+c, 130);
 
     ellipse(this.x,this.y,20);
@@ -106,10 +114,10 @@ function highlightPlayed(ellipseNumber){
 
   setTimeout(function(){
     soundCircleArr[ellipseNumber].display = function() {
-      var c = map(ellipseNumber, 0, 2000, 0, 100);
+      var c = map(ellipseNumber, 0, maptoThis, 0, 100);
       fill(30+c,60+c,150+c, 200);
 
-      var m = map(ellipseNumber, 0, 1000, 0, 2);
+      var m = map(ellipseNumber, 0, maptoThis, 0, 3.5);
       ellipse(this.x,this.y,circleSize+m);
     };
   }, 300);
@@ -176,11 +184,11 @@ function SoundEllipse(i) {
   //change Color
 
   this.display = function(circleDiameter) {
-    var c = map(i, 0, 2000, 0, 100);
+    var c = map(i, 0, maptoThis, 0, 100);
     fill(30+c,60+c,150+c ,200);
 
     noStroke();
-    var m = map(i, 0, 1000, 0, 2);
+    var m = map(i, 0, maptoThis, 0, 3.5);
     ellipse(this.x,this.y,circleDiameter+m);
     // console.log(circleDiameter)
   };
@@ -240,6 +248,7 @@ function reply_click(clicked_id)
     case "model02":
     dataArray = [];
     soundCircleArr = [];
+    maptoThis = scaleNumber02;
     currModel = modelArr[1];
     console.log("model02")
     fetchJson(currModel);
@@ -247,14 +256,34 @@ function reply_click(clicked_id)
     case "model03":
     dataArray = [];
     soundCircleArr = [];
+    maptoThis = scaleNumber002;
+    currModel = modelArr[2];
+    console.log("model03")
+    fetchJson(currModel);
+    console.log("03")
+    break;
+    case "model04":
+    dataArray = [];
+    soundCircleArr = [];
+    maptoThis = scaleNumber03;
     currModel = modelArr[3];
+    console.log("model03")
+    fetchJson(currModel);
+    console.log("03")
+    break;
+    case "model05":
+    dataArray = [];
+    soundCircleArr = [];
+    maptoThis = scaleNumber04;
+    currModel = modelArr[4];
     console.log("model03")
     fetchJson(currModel);
     console.log("03")
     break;
     case "about":
     currModel = modelArr[0];
-    console.log("about")
+    console.log("about");
+    break;
   }
   //
   // console.log("button",clicked_id)
@@ -333,7 +362,7 @@ Boid.prototype.flock = function(boids) {
   var coh = this.cohesion(boids);   // Cohesion
   // Arbitrarily weight these forces
   sep.mult(3.7);
-  ali.mult(1.78);
+  ali.mult(3.3);
   coh.mult(0.45);
   // Add the force vectors to acceleration
   this.applyForce(sep);
