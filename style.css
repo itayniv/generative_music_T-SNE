@@ -44,6 +44,7 @@ position: absolute;
   width: 25%;
 }
 
+
 /* The Modal (background) */
 .modal {
   display: none;
@@ -67,6 +68,11 @@ position: absolute;
   /* padding: 0; */
   /* width: 90%; */
   /* max-width: 700px; */
+}
+
+.button-z {
+  z-index: 5555;
+
 }
 
 /* The Close Button */
