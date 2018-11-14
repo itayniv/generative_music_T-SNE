@@ -306,9 +306,9 @@ function Boid(x,y) {
   this.acceleration = createVector(0,0);
   this.velocity = createVector(random(-1,1),random(-1,1));
   this.position = createVector(x,y);
-  this.r = 3.0;
+  this.r = 3.8;
   this.maxspeed = 5;    // Maximum speed
-  this.maxforce = 0.08; // Maximum steering force
+  this.maxforce = 0.2; // Maximum steering force
 }
 
 
@@ -368,16 +368,15 @@ Boid.prototype.seek = function(target) {
 Boid.prototype.render = function() {
   // Draw a triangle rotated in the direction of velocity
   var theta = this.velocity.heading() + radians(90);
-  fill(220,90,60);
+  fill(220,90,120);
   noStroke();
   push();
   translate(this.position.x,this.position.y);
   rotate(theta);
-  // triangle(300, 100, 320, 100, 310, 80);
   beginShape();
   vertex(0, -this.r*3);
-  vertex(-this.r, this.r/1);
-  vertex(this.r, this.r/1);
+  vertex(-this.r, this.r*1);
+  vertex(this.r, this.r*1);
   endShape(CLOSE);
   pop();
 }
