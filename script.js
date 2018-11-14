@@ -4,14 +4,14 @@ let width = window.innerWidth;
 let height = window.innerHeight;
 // let sample = new Audio();
 let mouseThreshold = 10;
-let circleSize = 3;
-let color = [116,122,220,255];
-let colorPlay = [100, 100, 220, 255];
+let circleSize = 6;
+let color = [116,122,220,200];
+let colorPlay = [100, 100, 220, 200];
 let hovercolor = [204, 102, 0];
 let pauseBetweenPlay = 1;
 let stopThresh = 1.0;
 let currModel = '';
-let modelArr = ['/data/randomPoints.json', '/data/favoritethings.json', '/data/edenahbez.json'];
+let modelArr = ['/data/randomPoints.json', '/data/favoritethings.json', '/data/edenahbez.json','/data/tomorrow.json'];
 let animvar = 0;
 let flock;
 let mouseDown = false;
@@ -26,6 +26,15 @@ function normalize(){
   }
 
 }
+
+window.onload = function() {
+
+
+setTimeout(function(){
+  document.getElementById('model01').click();
+  console.log("welcome!")
+}, 1000);
+};
 
 
 window.addEventListener('resize', function(){
@@ -82,22 +91,26 @@ function windowResized() {
 }
 
 function highlightPlayed(ellipseNumber){
-
   soundCircleArr[ellipseNumber].display = function() {
-    fill(30+ellipseNumber/30,70+ellipseNumber/50,160+ellipseNumber/45, 130);
+
+    var c = map(ellipseNumber, 0, 2000, 0, 100);
+    fill(30+c,60+c,150+c, 130);
 
     ellipse(this.x,this.y,20);
 
     noFill();
     strokeWeight(2); // Beastly
-    stroke(30+ellipseNumber/60,70+ellipseNumber/60,160+ellipseNumber/200,100);
+    stroke(30+c,60+c,150+c, 130,100);
     ellipse(this.x,this.y,25);
   };
 
   setTimeout(function(){
     soundCircleArr[ellipseNumber].display = function() {
-      fill(30+ellipseNumber/30,70+ellipseNumber/50,160+ellipseNumber/45,);
-      ellipse(this.x,this.y,circleSize+ellipseNumber/1000);
+      var c = map(ellipseNumber, 0, 2000, 0, 100);
+      fill(30+c,60+c,150+c, 200);
+
+      var m = map(ellipseNumber, 0, 1000, 0, 2);
+      ellipse(this.x,this.y,circleSize+m);
     };
   }, 300);
 }
@@ -106,7 +119,7 @@ function highlightPlayed(ellipseNumber){
 
 function draw() {
 
-  background(240, 239, 241);
+  background(240, 239, 238);
   noStroke();
   //Run Boids
   flock.run();
@@ -163,10 +176,12 @@ function SoundEllipse(i) {
   //change Color
 
   this.display = function(circleDiameter) {
-    fill(20+i/30,70+i/50,160+i/45);
+    var c = map(i, 0, 2000, 0, 100);
+    fill(30+c,60+c,150+c ,200);
 
     noStroke();
-    ellipse(this.x,this.y,circleDiameter);
+    var m = map(i, 0, 1000, 0, 2);
+    ellipse(this.x,this.y,circleDiameter+m);
     // console.log(circleDiameter)
   };
 }
@@ -232,8 +247,8 @@ function reply_click(clicked_id)
     case "model03":
     dataArray = [];
     soundCircleArr = [];
-    currModel = modelArr[2];
-    console.log("model02")
+    currModel = modelArr[3];
+    console.log("model03")
     fetchJson(currModel);
     console.log("03")
     break;
@@ -317,9 +332,9 @@ Boid.prototype.flock = function(boids) {
   var ali = this.align(boids);      // Alignment
   var coh = this.cohesion(boids);   // Cohesion
   // Arbitrarily weight these forces
-  sep.mult(3.5);
-  ali.mult(3.4);
-  coh.mult(0.3);
+  sep.mult(3.7);
+  ali.mult(1.78);
+  coh.mult(0.45);
   // Add the force vectors to acceleration
   this.applyForce(sep);
   this.applyForce(ali);
@@ -353,7 +368,7 @@ Boid.prototype.seek = function(target) {
 Boid.prototype.render = function() {
   // Draw a triangle rotated in the direction of velocity
   var theta = this.velocity.heading() + radians(90);
-  fill(220,20,30);
+  fill(220,90,60);
   noStroke();
   push();
   translate(this.position.x,this.position.y);

@@ -30,13 +30,20 @@
 
             <p>This experiment displays a set of processed audio files in two dimensional space using the t-SNE
               dimensionality reduction technique, placing similar-sounding audio clips near each other,
-              and plays them back as autonomous flocking agents collide with them.</p>
+              and plays them back as autonomous flocking agents collide with them.</br>
+              To add a bird click on the canvas, to remove press the left arrow.</p>
+
             <p>TSNE processed with the help of <a href="http://ml4a.github.io/guides/AudioTSNEViewer/">Gene Kogan's ML4A guids</a>.</br>
               Boids simulation heavily inspired by <a href="https://p5js.org/examples/simulate-flocking.html">p5JS Flocking</a>.
+            </p>
+            <div class="closeButton">
+              <button class="mdl-button mdl-js-button" onclick="closeModal()">
+                close
+              </button>
+            </div>
           </div>
           <div class="col-sm-4">
           </div>
-
       </div>
     </div>
   </div>
@@ -53,9 +60,9 @@
           </button>
           <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
           for="demo-menu-lower-left">
-          <li id="model01" class="mdl-menu__item" onClick="reply_click(this.id)">Misc Sound</li>
+          <li id="model01" class="mdl-menu__item" onClick="reply_click(this.id)">Misc sound library</li>
           <li id="model02" class="mdl-menu__item" onClick="reply_click(this.id)">John Coltrane - My Favorite Things</li>
-          <li id="model03" class="mdl-menu__item mdl-menu__item--full-bleed-divider" onClick="reply_click(this.id)">tSNE model 3</li>
+          <li id="model03" class="mdl-menu__item mdl-menu__item--full-bleed-divider" onClick="reply_click(this.id)">The Beatles - Tomorrow Never Knows</li>
           <li id="about"class="mdl-menu__item" onclick="openModal();currentSlide(1)">about</li>
         </ul>
       </div>
