@@ -20,7 +20,7 @@ let scaleNumber01 = 2000;
 let scaleNumber02 = 1000;
 let scaleNumber002 = 2800;
 
-let scaleNumber03 = 100;
+let scaleNumber03 = 700;
 let scaleNumber04 = 3200;
 
 let maptoThis = 2000;
