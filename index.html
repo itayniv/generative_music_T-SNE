@@ -3,6 +3,7 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
   <script
   src="https://code.jquery.com/jquery-3.3.1.js"
@@ -17,22 +18,24 @@
   <script src="script.js"></script>
   <script src="modal.js"></script>
 
+
 </head>
 <body>
   <div id="myModal" class="modal">
     <span class="close cursor" onclick="closeModal()">&times;</span>
     <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-4">
-          </div>
-          <div class="col-sm-4">
-            <p>🐦</p>
-            <p>Flocking TSNE is an experiment by <a href="http://www.ayalrosenberg.com">Ayal Rosenberg</a> & <a href="http://www.ItayNiv.com">Itay Niv</a></p>
+      <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4 aboutText">
+          <p>🐦</p>
+          <p>Flocking TSNE is an experiment by <a href="http://www.ayalrosenberg.com">Ayal Rosenberg</a> & <a href="http://www.ItayNiv.com">Itay Niv</a></p>
 
-            <p>This experiment displays a set of processed audio files in two dimensional space using the t-SNE
-              dimensionality reduction technique, placing similar-sounding audio clips near each other,
-              and plays them back as autonomous flocking agents collide with them.</br>
-              To add a bird click on the canvas, to remove press the left arrow.</p>
+          <p>This experiment displays a set of processed audio files in a two dimensional space using the t-SNE
+            dimensionality reduction technique, placing similar-sounding audio clips near each other,
+            and plays them back as autonomous flocking agents collide with them. </p>
+
+            <p>To add a bird click on the canvas, to remove press the left arrow and adjust slider to change flock cohesion.</p>
 
             <p>TSNE processed with the help of <a href="http://ml4a.github.io/guides/AudioTSNEViewer/">Gene Kogan's ML4A guids</a>.</br>
               Boids simulation heavily inspired by <a href="https://p5js.org/examples/simulate-flocking.html">p5JS Flocking</a>.
@@ -45,23 +48,20 @@
           </div>
           <div class="col-sm-4">
           </div>
+        </div>
       </div>
     </div>
-  </div>
-
-
-  <div id="sketch-holder" class="canvas">
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="menu">
-
-          <!-- Accent-colored raised button with ripple -->
-          <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-z ">
-            Flocking tSNE
-          </button>
-          <!-- <button id="demo-menu-lower-left" class="mdl-button mdl-js-button">
+    <div id="sketch-holder" class="canvas">
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="menu">
+            <!-- Accent-colored raised button with ripple -->
+            <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-z ">
+              Flocking tSNE
+            </button>
+            <!-- <button id="demo-menu-lower-left" class="mdl-button mdl-js-button">
             Flocking tSNE
           </button> -->
           <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
@@ -75,9 +75,19 @@
         </ul>
       </div>
     </div>
-  </div>
-</div>
+    <div class="col-sm-6">
+    </div>
+        <div class="col-sm-4">
+
+          <div class="flockingSlider">
+              <span class="flockingSliderText">FLOCK COHESION</span>
+            <input id="slider1" oninput="sliderChange1(this.value)" class="mdl-slider mdl-js-slider" type="range"
+            min="0" max="100" value="60" tabindex="0">
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-</body>
-</html>
+  </body>
+  </html>

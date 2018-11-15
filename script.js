@@ -16,6 +16,8 @@ let animvar = 0;
 let flock;
 let mouseDown = false;
 let dataArray = [];
+let sliderVal = 0;
+
 let scaleNumber01 = 2000;
 let scaleNumber02 = 1000;
 let scaleNumber002 = 2800;
@@ -79,6 +81,8 @@ function fetchJson(url){
 
 
 function setup() {
+
+  document.getElementById('slider1').value = 60;
 
   var canvas = createCanvas(width, height);
   canvas.parent('sketch-holder');
@@ -223,6 +227,37 @@ function mouseReleased(){
 }
 
 function mouseMoved(){
+
+  if ((soundCircleArr)){
+    for (var i = 0; i < soundCircleArr.length; i++) {
+      var d = int(dist(mouseX, mouseY, soundCircleArr[i].x,soundCircleArr[i].y));
+
+      if (d < mouseThreshold){
+        let link = soundCircleArr[i].link;
+        let sample = new Audio();
+
+        highlightPlayed(i);
+        sample.src = link;
+
+        if (soundCircleArr[i].playing == false){
+          sample.play();
+          soundCircleArr[i].playing = true;
+          let thisSound = i;
+          turnPlayingToFalse(thisSound);
+          // stop sample after x seconds
+          sample.addEventListener('timeupdate', function() {
+            var t = sample.currentTime;
+            if (t > stopThresh) {
+              sample.pause();
+            }
+          });
+        }
+      }
+    }
+  }
+
+
+
 }
 
 
@@ -360,10 +395,23 @@ Boid.prototype.flock = function(boids) {
   var sep = this.separate(boids);   // Separation
   var ali = this.align(boids);      // Alignment
   var coh = this.cohesion(boids);   // Cohesion
-  // Arbitrarily weight these forces
-  sep.mult(3.7);
-  ali.mult(3.3);
-  coh.mult(0.45);
+
+
+  var mappedSe = map(sliderVal, 0, 100, -1.0, 1.5)
+  var mappedAl = map(sliderVal, 0, 100, -0.5, 1.0)
+  var mappedCo = map(sliderVal, 0, 100, 0, 1.0)
+
+  // console.log(mappedSe, mappedAl, mappedCo)
+  sep.mult(mappedSe);
+  ali.mult(mappedAl);
+  coh.mult(mappedCo);
+
+  // // Arbitrarily weight these forces
+  // sep.mult(3.7);
+  // ali.mult(3.3);
+  // coh.mult(0.45);
+
+
   // Add the force vectors to acceleration
   this.applyForce(sep);
   this.applyForce(ali);
@@ -497,4 +545,10 @@ Boid.prototype.cohesion = function(boids) {
   } else {
     return createVector(0,0);
   }
+}
+
+
+
+function sliderChange1(val) {
+  sliderVal = parseFloat(val);
 }

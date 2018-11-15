@@ -43,8 +43,27 @@ position: absolute;
   float: left;
   width: 25%;
 }
+.flockingSlider{
+  float: right;
+  max-width: 70%;
+  padding-top: 20px;
+  font-family: 'Roboto', sans-serif;
+}
 
+.flockingSliderText{
+  font-weight: 500;
+  font-size: 14px;
+  padding-left: 20px;
+  /* max-width: 70%; */
+  padding-top: 20px;
+  font-family: 'Roboto', sans-serif;
+}
 
+.aboutText{
+  font-weight: 400;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
 /* The Modal (background) */
 .modal {
   display: none;
