@@ -44,7 +44,7 @@ window.onload = function() {
 
 setTimeout(function(){
   document.getElementById('model01').click();
-  console.log("welcome!")
+  console.log("welcome to flock sound!")
 }, 1000);
 };
 
@@ -66,7 +66,6 @@ function fetchJson(url){
   })
   .then(function(tsneJson) {
     tsneData = tsneJson;
-    // console.log(tsneData);
   })
   .then(function(){
     normalize(tsneData);
@@ -122,7 +121,6 @@ function highlightPlayed(ellipseNumber){
     soundCircleArr[ellipseNumber].display = function() {
       var c = map(ellipseNumber, 0, maptoThis, 0, 100);
       fill(30+c,60+c,150+c, 200);
-
       var m = map(ellipseNumber, 0, maptoThis, 0, 3.5);
       ellipse(this.x,this.y,circleSize+m);
     };
@@ -160,7 +158,9 @@ function draw() {
             sample.play();
             soundCircleArr[i].playing = true;
             let thisSound = i;
-            turnPlayingToFalse(thisSound);
+            if (thisSound){
+              turnPlayingToFalse(thisSound);
+            }
             // stop sample after x seconds
             sample.addEventListener('timeupdate', function() {
               var t = sample.currentTime;
@@ -196,7 +196,6 @@ function SoundEllipse(i) {
     noStroke();
     var m = map(i, 0, maptoThis, 0, 3.5);
     ellipse(this.x,this.y,circleDiameter+m);
-    // console.log(circleDiameter)
   };
 }
 
@@ -213,19 +212,17 @@ function mousePressed() {
 function keyPressed() {
 
   if (keyCode === LEFT_ARROW){
-    // console.log("hi");
     flock.popBoid(new Boid(mouseX,mouseY));
-
   }
 }
 
 
 
 function mouseReleased(){
-  console.log("mouse Released")
   mouseDown= false;
-
 }
+
+
 
 function mouseMoved(){
 
@@ -244,7 +241,9 @@ function mouseMoved(){
           sample.play();
           soundCircleArr[i].playing = true;
           let thisSound = i;
-          turnPlayingToFalse(thisSound);
+          if (thisSound){
+            turnPlayingToFalse(thisSound);
+          }
           // stop sample after x seconds
           sample.addEventListener('timeupdate', function() {
             var t = sample.currentTime;
@@ -256,9 +255,6 @@ function mouseMoved(){
       }
     }
   }
-
-
-
 }
 
 
@@ -266,7 +262,6 @@ function turnPlayingToFalse(currentSound){
   setTimeout(function() {
     soundCircleArr[currentSound].playing = false
   }, 1000);
-
 }
 
 
@@ -279,7 +274,6 @@ function reply_click(clicked_id)
     soundCircleArr = [];
     maptoThis = scaleNumber01;
     currModel = modelArr[0];
-    console.log("model01", currModel);
     fetchJson(currModel);
     break;
     case "model02":
@@ -287,7 +281,6 @@ function reply_click(clicked_id)
     soundCircleArr = [];
     maptoThis = scaleNumber02;
     currModel = modelArr[1];
-    console.log("model02")
     fetchJson(currModel);
     break;
     case "model03":
@@ -295,40 +288,26 @@ function reply_click(clicked_id)
     soundCircleArr = [];
     maptoThis = scaleNumber002;
     currModel = modelArr[2];
-    console.log("model03")
     fetchJson(currModel);
-    console.log("03")
     break;
     case "model04":
     dataArray = [];
     soundCircleArr = [];
     maptoThis = scaleNumber03;
     currModel = modelArr[3];
-    console.log("model03")
     fetchJson(currModel);
-    console.log("03")
     break;
     case "model05":
     dataArray = [];
     soundCircleArr = [];
     maptoThis = scaleNumber04;
     currModel = modelArr[4];
-    console.log("model03")
     fetchJson(currModel);
-    console.log("03")
     break;
     case "about":
     currModel = modelArr[0];
-    console.log("about");
     break;
   }
-  //
-  // console.log("button",clicked_id)
-  // if(clicked_id == 'model01'){
-  //
-  //   console.log(currModel)
-  // }
-
 }
 
 
@@ -403,16 +382,9 @@ Boid.prototype.flock = function(boids) {
   var mappedAl = map(sliderVal, 0, 100, -0.5, 1.5);
   var mappedCo = map(sliderVal, 0, 100, 0, 2.0);
 
-  // console.log(mappedSe, mappedAl, mappedCo)
   sep.mult(mappedSe);
   ali.mult(mappedAl);
   coh.mult(mappedCo);
-
-  // // Arbitrarily weight these forces
-  // sep.mult(3.7);
-  // ali.mult(3.3);
-  // coh.mult(0.45);
-
 
   // Add the force vectors to acceleration
   this.applyForce(sep);
@@ -558,11 +530,9 @@ function sliderChange1(val) {
 
 
 function hoverOver() {
-    console.log("hover");
     allowClick = false;
 }
 
 function hoverOut() {
-    console.log("hover out");
     allowClick = true;
 }
