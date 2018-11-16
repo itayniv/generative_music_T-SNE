@@ -11,7 +11,7 @@ let hovercolor = [204, 102, 0];
 let pauseBetweenPlay = 1;
 let stopThresh = 1.0;
 let currModel = '';
-let modelArr = ['/data/randomPoints.json','/data/clarinet.json', '/data/philarmonic_wind.json', '/data/percussion.json','/data/strings.json'];
+let modelArr = ['./data/randomPoints.json','./data/clarinet.json', './data/philarmonic_wind.json', './data/percussion.json','./data/strings.json'];
 let animvar = 0;
 let flock;
 let mouseDown = false;
@@ -82,7 +82,7 @@ function fetchJson(url){
 
 function setup() {
 
-  document.getElementById('slider1').value = 60;
+  document.getElementById('slider1').value = 80;
 
   var canvas = createCanvas(width, height);
   canvas.parent('sketch-holder');
@@ -397,9 +397,9 @@ Boid.prototype.flock = function(boids) {
   var coh = this.cohesion(boids);   // Cohesion
 
 
-  var mappedSe = map(sliderVal, 0, 100, -1.0, 1.5)
-  var mappedAl = map(sliderVal, 0, 100, -0.5, 1.0)
-  var mappedCo = map(sliderVal, 0, 100, 0, 1.0)
+  var mappedSe = map(sliderVal, 0, 100, -1.0, 3.0);
+  var mappedAl = map(sliderVal, 0, 100, -0.5, 1.5);
+  var mappedCo = map(sliderVal, 0, 100, 0, 2.0);
 
   // console.log(mappedSe, mappedAl, mappedCo)
   sep.mult(mappedSe);
