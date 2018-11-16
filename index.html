@@ -30,16 +30,18 @@
         <div class="col-sm-4 aboutText">
           <p>Flock Sound is an experiment by <a href="http://www.ayalrosenberg.com" target="_blank">Ayal Rosenberg</a> & <a href="http://www.ItayNiv.com" target="_blank">Itay Niv</a></p>
 
-
-          <p>This experiment displays a set of processed audio files in a two dimensional space using the t-SNE
+          <p>This experiment displays a set of processed audio files of orchestral instruments in a two dimensional space using the t-SNE
             dimensionality reduction technique, placing similar-sounding audio clips near each other,
             and plays them back as autonomous flocking agents collide with them. </p>
 
             <p>To add a bird click on the canvas, to remove press the left arrow and adjust slider to change flock cohesion.</p>
 
+            <p>Make sure your sound is on.</br>
+            Best performance on chrome browser on desktop.</p>
+
             <p>TSNE processed with the help of <a href="http://ml4a.github.io/guides/AudioTSNEViewer/" target="_blank">Gene Kogan's ML4A guids</a>.</br>
               Boids simulation heavily inspired by <a href="https://p5js.org/examples/simulate-flocking.html" target="_blank">p5JS Flocking</a>.
-            <p>Sound on</p>
+
             </p>
             <div class="closeButton">
               <button class="mdl-button mdl-js-button" onclick="closeModal()" onmouseover="hoverOver()" onmouseout="hoverOut()">
@@ -52,6 +54,34 @@
         </div>
       </div>
     </div>
+
+
+
+    <div id="iosModalid" class="modalIOS">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-8">
+            <p class="iosTexthighlight">This experiment will work better on desktop and android devices, please try it there!</p>
+            <p></br></br></p>
+            <p class="iosText">Flock Sound is an experiment by <a href="http://www.ayalrosenberg.com" target="_blank">Ayal Rosenberg</a> & <a href="http://www.ItayNiv.com" target="_blank">Itay Niv</a></p>
+            <p></br></p>
+            <p class="iosText">This experiment displays a set of processed audio files of orchestral instruments in a two dimensional space using the t-SNE
+              dimensionality reduction technique, placing similar-sounding audio clips near each other,
+              and plays them back as autonomous flocking agents collide with them. </p>
+
+              </div>
+            </div>
+            <div class="col-sm-2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
     <div id="sketch-holder" class="canvas">
     </div>
     <div class="container-fluid">
@@ -59,7 +89,8 @@
         <div class="col-sm-2">
           <div class="menu" onmouseover="hoverOver()" onmouseout="hoverOut()" >
             <!-- Accent-colored raised button with ripple -->
-            <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-z" onmouseover="hoverOver()" onmouseout="hoverOut()">
+
+            <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-z dropdown" onmouseover="hoverOver()" onmouseout="hoverOut()">
               Flock sounds
             </button>
             <!-- <button id="demo-menu-lower-left" class="mdl-button mdl-js-button">
@@ -82,7 +113,7 @@
 
           <div class="flockingSlider">
               <span class="flockingSliderText" onmouseover="hoverOver()" onmouseout="hoverOut()">FLOCK COHESION</span>
-            <input id="slider1" oninput="sliderChange1(this.value)" class="mdl-slider mdl-js-slider" type="range"
+            <input id="slider1" oninput="sliderChange1(this.value)" class="mdl-slider mdl-js-slider dropdown" type="range"
             min="0" max="100" value="60" tabindex="0" onmouseover="hoverOver()" onmouseout="hoverOut()">
           </div>
         </div>

@@ -88,7 +88,7 @@ function setup() {
   var canvas = createCanvas(width, height);
   canvas.parent('sketch-holder');
 
-  fetchJson('/data/randomPoints.json');
+  fetchJson('./data/randomPoints.json');
 
   flock = new Flock();
   // Add an initial set of boids into the system
