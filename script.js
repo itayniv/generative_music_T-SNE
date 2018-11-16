@@ -27,6 +27,8 @@ let scaleNumber04 = 3200;
 
 let maptoThis = 2000;
 
+let allowClick = true;
+
 
 
 
@@ -200,12 +202,11 @@ function SoundEllipse(i) {
 
 
 function mousePressed() {
-  flock.addBoid(new Boid(mouseX,mouseY));
 
-  // Check if mouse is inside the circle
-  // console.log("mouse Down");
-  // console.log(mouseX, mouseY);
-  // mouseDown = true;
+  if (allowClick){
+    flock.addBoid(new Boid(mouseX,mouseY));
+
+  }
 }
 
 
@@ -276,6 +277,7 @@ function reply_click(clicked_id)
     case "model01":
     dataArray = [];
     soundCircleArr = [];
+    maptoThis = scaleNumber01;
     currModel = modelArr[0];
     console.log("model01", currModel);
     fetchJson(currModel);
@@ -551,4 +553,16 @@ Boid.prototype.cohesion = function(boids) {
 
 function sliderChange1(val) {
   sliderVal = parseFloat(val);
+}
+
+
+
+function hoverOver() {
+    console.log("hover");
+    allowClick = false;
+}
+
+function hoverOut() {
+    console.log("hover out");
+    allowClick = true;
 }

@@ -28,8 +28,8 @@
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4 aboutText">
-          <p>🐦</p>
           <p>Flock Sound is an experiment by <a href="http://www.ayalrosenberg.com" target="_blank">Ayal Rosenberg</a> & <a href="http://www.ItayNiv.com" target="_blank">Itay Niv</a></p>
+
 
           <p>This experiment displays a set of processed audio files in a two dimensional space using the t-SNE
             dimensionality reduction technique, placing similar-sounding audio clips near each other,
@@ -39,9 +39,10 @@
 
             <p>TSNE processed with the help of <a href="http://ml4a.github.io/guides/AudioTSNEViewer/" target="_blank">Gene Kogan's ML4A guids</a>.</br>
               Boids simulation heavily inspired by <a href="https://p5js.org/examples/simulate-flocking.html" target="_blank">p5JS Flocking</a>.
+            <p>Sound on</p>
             </p>
             <div class="closeButton">
-              <button class="mdl-button mdl-js-button" onclick="closeModal()">
+              <button class="mdl-button mdl-js-button" onclick="closeModal()" onmouseover="hoverOver()" onmouseout="hoverOut()">
                 close
               </button>
             </div>
@@ -56,9 +57,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">
-          <div class="menu">
+          <div class="menu" onmouseover="hoverOver()" onmouseout="hoverOut()" >
             <!-- Accent-colored raised button with ripple -->
-            <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-z ">
+            <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-z" onmouseover="hoverOver()" onmouseout="hoverOut()">
               Flock sounds
             </button>
             <!-- <button id="demo-menu-lower-left" class="mdl-button mdl-js-button">
@@ -80,9 +81,9 @@
         <div class="col-sm-4">
 
           <div class="flockingSlider">
-              <span class="flockingSliderText">FLOCK COHESION</span>
+              <span class="flockingSliderText" onmouseover="hoverOver()" onmouseout="hoverOut()">FLOCK COHESION</span>
             <input id="slider1" oninput="sliderChange1(this.value)" class="mdl-slider mdl-js-slider" type="range"
-            min="0" max="100" value="60" tabindex="0">
+            min="0" max="100" value="60" tabindex="0" onmouseover="hoverOver()" onmouseout="hoverOut()">
           </div>
         </div>
       </div>
