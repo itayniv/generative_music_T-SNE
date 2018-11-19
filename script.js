@@ -11,7 +11,7 @@ let hovercolor = [204, 102, 0];
 let pauseBetweenPlay = 1;
 let stopThresh = 1.0;
 let currModel = '';
-let modelArr = ['./data/randomPoints.json','./data/clarinet.json', './data/philarmonic_wind.json', './data/percussion.json','./data/strings.json'];
+let modelArr = ['./data/randomPoints.json','./data/clarinet.json', './data/winds.json', './data/percussion.json','./data/strings.json'];
 let animvar = 0;
 let flock;
 let mouseDown = false;
@@ -353,7 +353,7 @@ function Boid(x,y) {
   this.position = createVector(x,y);
   this.r = 3.8;
   this.maxspeed = 5;    // Maximum speed
-  this.maxforce = 0.2; // Maximum steering force
+  this.maxforce = 0.16; // Maximum steering force
 }
 
 
@@ -378,8 +378,8 @@ Boid.prototype.flock = function(boids) {
   var coh = this.cohesion(boids);   // Cohesion
 
 
-  var mappedSe = map(sliderVal, 0, 100, -1.0, 3.0);
-  var mappedAl = map(sliderVal, 0, 100, -0.5, 1.5);
+  var mappedSe = map(sliderVal, 0, 100, -1.0, 4.0);
+  var mappedAl = map(sliderVal, 0, 100, -0.5, 4.0);
   var mappedCo = map(sliderVal, 0, 100, 0, 2.0);
 
   sep.mult(mappedSe);
